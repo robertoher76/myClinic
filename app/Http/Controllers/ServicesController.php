@@ -2,68 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\Concerns\CrudController;
 use App\Models\Service;
-use Illuminate\Http\Request;
 
-class ServicesController extends Controller
+class ServicesController extends CrudController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct()
     {
-        $services = Service::all();
-
-        return view('admin.services.index', [
-            'services' => $services
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin.services.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $this->model = new Service();
+        parent::__construct();
     }
 }

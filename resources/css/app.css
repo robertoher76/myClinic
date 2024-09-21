@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.index-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.index-table table tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.index-table table td {
+    width:0.1%;
+    white-space: nowrap;
+}
+
