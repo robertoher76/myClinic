@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -65,8 +66,11 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
+        $permissions = Permission::orderBy('table')->get();
+
         return view('admin.roles.edit', [
-            'model' => $role
+            'model' => $role,
+            'permissions' => $permissions
         ]);
     }
 

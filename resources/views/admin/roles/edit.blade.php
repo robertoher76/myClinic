@@ -7,12 +7,10 @@
 
     <div class="mt-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <span>
+            <span class="text-sm font-medium leading-5 text-gray-900 dark:text-gray-100">
                 <a href="{{ route('dashboard') }}" class="underline">Home</a>
                 &nbsp;/&nbsp;
                 <a href="{{ route('roles.index') }}" class="underline">Roles</a>
-                &nbsp;/&nbsp;
-                Editar Rol
                 &nbsp;/&nbsp;
                 {{ $model->id }}
             </span>
@@ -53,6 +51,43 @@
                         @endif
                         </div>
                     </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        Permisos
+                    </h2>
+
+                    {{-- @foreach($permissions as $permission)
+                        @if ($loop->first)
+                            @php $currentTable = $permission->table @endphp
+                            <p class="question text-gray-900 font-semibold capitalize">
+                                {{ trans_choice('models.' . $currentTable, 10) }}:
+                            </p>
+                        @endif
+
+                        @if($currentTable != $permission->table)
+                            @php $currentTable = $permission->table @endphp
+                            <p class="question text-gray-900 font-semibold capitalize">
+                                {{ trans_choice('models.' . $currentTable, 10) }}:
+                            </p>
+                        @endif
+
+                        <div class="columns small-24 medium-12">
+                            <label>
+                                <input type="checkbox">{{ $permission->name }}
+                            </label>
+                        </div>
+                    @endforeach --}}
+
+                    <livewire:admin.roles.permissions :role="$model">
 
                 </div>
             </div>
