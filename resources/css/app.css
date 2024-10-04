@@ -2,7 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
 
+    .calendar-header-box {
+        @apply bg-[#e7f5fe] border border-gray-100 w-[14.28%] text-center font-bold;
+    }
+
+    .calendar-day {
+        @apply min-h-24 border border-gray-100 w-[14.28%] p-2;
+    }
+
+    .calendar-current-month {
+        @apply bg-white;
+    }
+
+    .calendar-not-current-month {
+        @apply bg-[#f9f9f9];
+    }
+
+    .calendar-appointment-box {
+        @apply shadow-md rounded-lg p-2 border border-gray-100 font-bold cursor-pointer mt-2 mb-2;
+    }
+
+}
 .index-table table {
     border-collapse: collapse;
     width: 100%;

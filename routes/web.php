@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AppointmentsController;
+use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ServicesController;
@@ -19,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::resource('appointments', AppointmentsController::class);
+    Route::resource('doctors', DoctorsController::class);
+    Route::resource('patients', PatientsController::class);
     Route::resource('services', ServicesController::class);
     Route::resource('roles', RolesController::class);
 });

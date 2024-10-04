@@ -25,37 +25,53 @@ class PermissionSeeder extends Seeder
         $permissions = [
             //USERS
             [
-                'code' => 'users.create',
-                'name' => 'Agregar Usuarios'
+                'code'      => 'users.create',
+                'name'      => 'Agregar Usuarios',
+                'table'     => 'users',
+                'action'    => 'create',
             ],
             [
-                'code' => 'users.read',
-                'name' => 'Leer Usuarios'
+                'code'      => 'users.read',
+                'name'      => 'Leer Usuarios',
+                'table'     => 'users',
+                'action'    => 'read',
             ],
             [
-                'code' => 'users.update',
-                'name' => 'Editar Usuarios'
+                'code'      => 'users.update',
+                'name'      => 'Editar Usuarios',
+                'table'     => 'users',
+                'action'    => 'update',
             ],
             [
-                'code' => 'users.delete',
-                'name' => 'Eliminar Usuarios'
+                'code'      => 'users.delete',
+                'name'      => 'Eliminar Usuarios',
+                'table'     => 'users',
+                'action'    => 'delete',
             ],
             //SERVICIOS
             [
-                'code' => 'services.create',
-                'name' => 'Agregar Servicios'
+                'code'      => 'services.create',
+                'name'      => 'Agregar Servicios',
+                'table'     => 'services',
+                'action'    => 'create',
             ],
             [
-                'code' => 'services.read',
-                'name' => 'Leer Servicios'
+                'code'      => 'services.read',
+                'name'      => 'Leer Servicios',
+                'table'     => 'services',
+                'action'    => 'read',
             ],
             [
-                'code' => 'services.update',
-                'name' => 'Editar Servicios'
+                'code'      => 'services.update',
+                'name'      => 'Editar Servicios',
+                'table'     => 'services',
+                'action'    => 'update',
             ],
             [
-                'code' => 'services.delete',
-                'name' => 'Eliminar Servicios'
+                'code'      => 'services.delete',
+                'name'      => 'Eliminar Servicios',
+                'table'     => 'services',
+                'action'    => 'delete',
             ]
 
         ];
@@ -64,7 +80,9 @@ class PermissionSeeder extends Seeder
         {
             $record = Permission::create([
                 'code'          => $permission['code'],
-                'name'          => $permission['name']
+                'name'          => $permission['name'],
+                'table'         => $permission['table'],
+                'action'        => $permission['action']
             ]);
 
             $role->permissions()->attach($record->id);
