@@ -2,7 +2,6 @@
     <div class="max-w-full mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
-
                 <div class="px-2 py-1 flex w-full mb-4">
 
                     <div class="w-4/6 font-bold">
@@ -39,7 +38,14 @@
                             class="calendar-day
                             {{ $day['is_current_month'] ? 'calendar-current-month' : 'calendar-not-current-month' }}">
 
-                            {{ $day['day'] }}
+                            <div class="day-options flex items-center">
+                                <span class="inline-block mr-2">{{ $day['day'] }}</span>
+                                @if($day['available'])
+                                    <button wire:click="newAppointmentByDate({{ $day['timestamp'] }})" type="button" class="btn-add-appointment fill-green-700 hover:fill-green-800">
+                                        <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm-.747 9.25h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fill-rule="nonzero"/></svg>
+                                    </button>
+                                @endif
+                            </div>
 
                             @foreach($day['appointments'] as $appointment)
                                 <div class="calendar-appointment-box">

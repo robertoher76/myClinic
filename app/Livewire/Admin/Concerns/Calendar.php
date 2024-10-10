@@ -73,6 +73,8 @@ class Calendar extends Component
             $day = [
                 'day'               => $loopdate->format('j'),
                 'date'              => $loopdate->toDateString(),
+                'available'         => ($loopdate < $this->date) ? false : true,
+                'timestamp'         => $loopdate->timestamp,
                 'is_today'          => ($loopdate == $this->date) ? true : false,
                 'is_current_month'  => ($loopdate < $month->startOfMonth() || $loopdate > $month->endOfMonth()) ? false : true,
                 'appointments'      => []
@@ -121,18 +123,10 @@ class Calendar extends Component
     }
 
     #[On('appointment-created')]
-    public function updateCalendarByAppointmentCreated(array $appointment)
+    public function updateCalendarByAppointmentCreated()
     {
-        $key = array_search($appointment['date'], array_column($this->calendar, 'date'));
-
-        if ($key)
-        {
-            array_push($this->calendar[$key]['appointments'], $appointment);
-
-            $timestamps = array_column($this->calendar[$key]['appointments'], 'timestamp');
-
-            array_multisort($timestamps, SORT_ASC, $this->calendar[$key]['appointments']);
-        }
+        $this->initializeCalendar();
+        $this->initializeAppointments();
     }
 
     #[On('appointment-updated')]
@@ -140,6 +134,11 @@ class Calendar extends Component
     {
         $this->initializeCalendar();
         $this->initializeAppointments();
+    }
+
+    public function newAppointmentByDate(int $timestamp)
+    {
+        $this->dispatch('appointment-new', timestamp: $timestamp)->to(Form::class);
     }
 
     public function editAppointment(int $id)

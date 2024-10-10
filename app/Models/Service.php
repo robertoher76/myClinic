@@ -7,6 +7,7 @@ use App\Models\Concerns\Admin\Filters\Filter;
 use App\Models\Concerns\Admin\Routes\Routes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Service extends Model
 {
@@ -35,5 +36,13 @@ class Service extends Model
             'description'   => [ 'required', 'string', 'max:500' ],
             'price'         => [ 'required', 'numeric', 'gt:0' ],
         ];
+    }
+
+    /**
+     * Get the appointment's services.
+     */
+    public function services(): HasMany
+    {
+        return $this->hasMany(AppointmentService::class);
     }
 }

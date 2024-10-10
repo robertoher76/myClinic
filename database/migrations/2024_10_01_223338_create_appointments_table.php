@@ -16,6 +16,8 @@ return new class extends Migration
 
             $table->foreignId('patient_id')->constrained()->cascadeOnDelete();
 
+            $table->foreignId('doctor_id')->nullable()->constrained()->cascadeOnDelete();
+
             $table->timestamp('scheduled_at', 0);
 
             $table->integer('status')->unsigned();

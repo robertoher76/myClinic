@@ -23,7 +23,6 @@
     .calendar-appointment-box {
         @apply shadow-md rounded-lg p-2 border border-gray-100 font-bold cursor-pointer mt-2 mb-2;
     }
-
 }
 .index-table table {
     border-collapse: collapse;
@@ -39,3 +38,14 @@
     white-space: nowrap;
 }
 
+.day-options {
+    height: 24px;
+}
+
+.btn-add-appointment {
+    display: none;
+}
+
+.calendar-day:hover .btn-add-appointment {
+    display: block;
+}

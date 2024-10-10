@@ -6,6 +6,7 @@ use App\Models\Concerns\Admin\Routes\Routes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Appointment extends Model
 {
@@ -24,5 +25,13 @@ class Appointment extends Model
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    /**
+     * Get the appointment's services.
+     */
+    public function services(): HasMany
+    {
+        return $this->hasMany(AppointmentService::class);
     }
 }
