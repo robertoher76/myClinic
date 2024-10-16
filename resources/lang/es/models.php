@@ -7,6 +7,7 @@ return [
     'patients'      => '{1} Paciente|[2,*] Pacientes',
     'services'      => '{1} Servicio|[2,*] Servicios',
     'roles'         => '{1} Rol|[2,*] Roles',
+    'users'         => '{1} Usuario|[2,*] Usuarios',
 
     //PROPERTIES OF MODELS
     'appointment'   => [

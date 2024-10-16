@@ -3,6 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Concerns\Admin\Filters\Field;
+use App\Models\Concerns\Admin\Filters\Filter;
+use App\Models\Concerns\Admin\Routes\Routes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,6 +14,28 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    public function filter() : Filter
+    {
+        return new Filter(
+            new Field('none', 'ID', 'id', false),
+            new Field('text', 'Nombre', 'name'),
+            new Field('text', 'Email', 'email')
+        );
+    }
+
+    public function routes() : Routes
+    {
+        return new Routes(self::class);
+    }
+
+    public function rules(?int $id = null): array
+    {
+        return [
+            'name'  => [ 'required', 'string', 'max:255' ],
+            'email' => [ 'required', 'string', 'max:255' ],
+        ];
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +45,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role_id',
         'password',
     ];
 

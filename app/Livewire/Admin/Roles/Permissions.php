@@ -34,12 +34,12 @@ class Permissions extends Component
 
                 $array = $this->permissions[$record->table];
 
-                array_push($array, $record->code);
+                array_push($array, $record->action);
 
                 $this->permissions[$record->table] = $array;
 
             } else {
-                $this->permissions[$record->table] = [$record->code];
+                $this->permissions[$record->table] = [$record->action];
             }
         }
 
@@ -51,12 +51,12 @@ class Permissions extends Component
 
                 $array = $this->current_permissions[$current->table];
 
-                array_push($array, $current->code);
+                array_push($array, $current->action);
 
                 $this->current_permissions[$current->table] = $array;
 
             } else {
-                $this->current_permissions[$current->table] = [$current->code];
+                $this->current_permissions[$current->table] = [$current->action];
             }
         }
     }
@@ -82,7 +82,7 @@ class Permissions extends Component
 
         foreach($this->current_permissions as $table => $current_permission) {
             foreach($current_permission as $permission) {
-                if ($record = Permission::where('table', $table)->where('code', $permission)->first()) {
+                if ($record = Permission::where('table', $table)->where('action', $permission)->first()) {
                     array_push($ids, $record->id);
                 }
             }

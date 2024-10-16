@@ -15,65 +15,140 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         //ROL
-        $role = Role::create([
-            'code'          => 'sysadmin',
-            'name'          => 'Administrador',
-            'modifiable'    => false
-        ]);
+        // $role = Role::create([
+        //     'code'          => 'sysadmin',
+        //     'name'          => 'Administrador',
+        //     'modifiable'    => false
+        // ]);
+        $role = Role::first();
 
         //PERMISSIONS
         $permissions = [
-            //USERS
+            // //USERS
+            // [
+            //     'code'      => 'users.create',
+            //     'name'      => 'Agregar Usuarios',
+            //     'table'     => 'users',
+            //     'action'    => 'create',
+            // ],
+            // [
+            //     'code'      => 'users.read',
+            //     'name'      => 'Leer Usuarios',
+            //     'table'     => 'users',
+            //     'action'    => 'read',
+            // ],
+            // [
+            //     'code'      => 'users.update',
+            //     'name'      => 'Editar Usuarios',
+            //     'table'     => 'users',
+            //     'action'    => 'update',
+            // ],
+            // [
+            //     'code'      => 'users.delete',
+            //     'name'      => 'Eliminar Usuarios',
+            //     'table'     => 'users',
+            //     'action'    => 'delete',
+            // ],
+            // //SERVICIOS
+            // [
+            //     'code'      => 'services.create',
+            //     'name'      => 'Agregar Servicios',
+            //     'table'     => 'services',
+            //     'action'    => 'create',
+            // ],
+            // [
+            //     'code'      => 'services.read',
+            //     'name'      => 'Leer Servicios',
+            //     'table'     => 'services',
+            //     'action'    => 'read',
+            // ],
+            // [
+            //     'code'      => 'services.update',
+            //     'name'      => 'Editar Servicios',
+            //     'table'     => 'services',
+            //     'action'    => 'update',
+            // ],
+            // [
+            //     'code'      => 'services.delete',
+            //     'name'      => 'Eliminar Servicios',
+            //     'table'     => 'services',
+            //     'action'    => 'delete',
+            // ],
+            //DOCTORES
             [
-                'code'      => 'users.create',
-                'name'      => 'Agregar Usuarios',
-                'table'     => 'users',
+                'code'      => 'doctors.create',
+                'name'      => 'Agregar Doctores',
+                'table'     => 'doctors',
                 'action'    => 'create',
             ],
             [
-                'code'      => 'users.read',
-                'name'      => 'Leer Usuarios',
-                'table'     => 'users',
+                'code'      => 'doctors.read',
+                'name'      => 'Leer Doctores',
+                'table'     => 'doctors',
                 'action'    => 'read',
             ],
             [
-                'code'      => 'users.update',
-                'name'      => 'Editar Usuarios',
-                'table'     => 'users',
+                'code'      => 'doctors.update',
+                'name'      => 'Editar Doctores',
+                'table'     => 'doctors',
                 'action'    => 'update',
             ],
             [
-                'code'      => 'users.delete',
-                'name'      => 'Eliminar Usuarios',
-                'table'     => 'users',
+                'code'      => 'doctors.delete',
+                'name'      => 'Eliminar Doctores',
+                'table'     => 'doctors',
                 'action'    => 'delete',
             ],
-            //SERVICIOS
+            //Pacientes
             [
-                'code'      => 'services.create',
-                'name'      => 'Agregar Servicios',
-                'table'     => 'services',
+                'code'      => 'patients.create',
+                'name'      => 'Agregar Paciente',
+                'table'     => 'patients',
                 'action'    => 'create',
             ],
             [
-                'code'      => 'services.read',
-                'name'      => 'Leer Servicios',
-                'table'     => 'services',
+                'code'      => 'patients.read',
+                'name'      => 'Leer Paciente',
+                'table'     => 'patients',
                 'action'    => 'read',
             ],
             [
-                'code'      => 'services.update',
-                'name'      => 'Editar Servicios',
-                'table'     => 'services',
+                'code'      => 'patients.update',
+                'name'      => 'Editar Paciente',
+                'table'     => 'patients',
                 'action'    => 'update',
             ],
             [
-                'code'      => 'services.delete',
-                'name'      => 'Eliminar Servicios',
-                'table'     => 'services',
+                'code'      => 'patients.delete',
+                'name'      => 'Eliminar Paciente',
+                'table'     => 'patients',
+                'action'    => 'delete',
+            ],
+            //Citas
+            [
+                'code'      => 'appointments.create',
+                'name'      => 'Agregar Citas',
+                'table'     => 'appointments',
+                'action'    => 'create',
+            ],
+            [
+                'code'      => 'appointments.read',
+                'name'      => 'Leer Citas',
+                'table'     => 'appointments',
+                'action'    => 'read',
+            ],
+            [
+                'code'      => 'appointments.update',
+                'name'      => 'Editar Citas',
+                'table'     => 'appointments',
+                'action'    => 'update',
+            ],
+            [
+                'code'      => 'appointments.delete',
+                'name'      => 'Eliminar Citas',
+                'table'     => 'appointments',
                 'action'    => 'delete',
             ]
-
         ];
 
         foreach($permissions as $permission)

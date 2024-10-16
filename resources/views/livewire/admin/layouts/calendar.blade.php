@@ -4,8 +4,8 @@
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 <div class="px-2 py-1 flex w-full mb-4">
 
-                    <div class="w-4/6 font-bold">
-                        {{ $date->format('F Y') }}
+                    <div class="w-4/6 font-bold capitalize">
+                        {{ $date->monthName . ' ' . $date->format('Y') }}
                     </div>
 
                     <div wire:click="previousMonth()" class="w-1/6 text-right hover:text-gray-900 cursor-pointer" >

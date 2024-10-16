@@ -15,6 +15,32 @@ class Appointment extends Model
 
     protected $guarded = [];
 
+    private const STATUS_ARRAY = [
+        0 => '',
+        1 => 'Programado',
+        2 => 'Finalizado',
+        3 => 'Cancelado',
+        4 => 'Reprogramado'
+    ];
+
+    private const STATUS_CLASS_ARRAY = [
+        0 => '',
+        1 => 'appointment-scheduled',
+        2 => 'appointment-finalized',
+        3 => 'appointment-canceled',
+        4 => 'appointment-rescheduled'
+    ];
+
+    public function getStatusLabelAttribute(): string
+    {
+        return self::STATUS_ARRAY[$this->status] ?? '';
+    }
+
+    public function getStatusClassAttribute(): string
+    {
+        return self::STATUS_CLASS_ARRAY[$this->status] ?? '';
+    }
+
     public function getAppointmentStartTimeAttribute(): ?string
     {
         $date = Carbon::parse($this->scheduled_at);
@@ -56,6 +82,14 @@ class Appointment extends Model
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    /**
+     * Get the doctor that owns the appointment.
+     */
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
     }
 
     /**

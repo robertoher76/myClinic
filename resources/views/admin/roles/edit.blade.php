@@ -27,7 +27,7 @@
                         @method('put')
 
                         <div>
-                            <x-input-label for="code" :value="__('Code')" />
+                            <x-input-label for="code" value="Código" />
                             <x-text-input id="code" name="code" type="text" class="mt-1 block w-full" :value="old('code', $model->code)" required autofocus autocomplete="code" />
                             <x-input-error class="mt-2" :messages="$errors->get('code')" />
                         </div>
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            <x-primary-button>Guardar</x-primary-button>
                             @if (session('status') === 'role-updated')
                             <p
                                 x-data="{ show: true }"
@@ -47,7 +47,7 @@
                                 x-transition
                                 x-init="setTimeout(() => show = false, 2000)"
                                 class="text-sm text-gray-600 dark:text-gray-400"
-                            >{{ __('Saved.') }}</p>
+                            >Guardado</p>
                         @endif
                         </div>
                     </form>

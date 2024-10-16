@@ -6,4 +6,9 @@
     </x-slot>
 
     <livewire:admin.appointments.agenda >
+
+    <livewire:admin.concerns.calendar>
+
+    <livewire:admin.appointments.form>
+
 </x-app-layout>

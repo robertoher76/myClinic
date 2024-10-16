@@ -25,7 +25,7 @@
     }
 
     .agenda-month {
-        @apply font-semibold text-xl text-gray-800 dark:text-gray-200;
+        @apply font-semibold text-xl text-gray-800 dark:text-gray-200 capitalize;
     }
 
     .agenda-day {
@@ -37,15 +37,39 @@
     }
 
     .agenda-grid-hour {
-        @apply block w-full border-b border-gray-400 font-semibold text-lg text-gray-800 dark:text-gray-200;
+        @apply block w-full border-b border-gray-400 font-semibold text-lg text-gray-800 dark:text-gray-200 px-4;
     }
 
     .agenda-grid-minutes {
-        @apply flex flex-col bg-[#f9f9f9] min-h-20 px-2 py-4;
+        @apply flex flex-col bg-[#f6f6f6] min-h-20;
     }
 
     .agenda-grid-minute {
-        @apply border-b border-gray-400 min-h-6 block;
+        @apply min-h-6 block mb-4;
+    }
+
+    .agenda-grid-minute-header {
+        @apply font-bold;
+    }
+
+    .agenda-grid-minute-body {
+        @apply bg-white;
+    }
+
+    .appointment-scheduled {
+        @apply bg-[#d1e8ff] text-[#2968A8];
+    }
+
+    .appointment-finalized {
+        @apply bg-[#dcffd1] text-[#58a829];
+    }
+
+    .appointment-canceled {
+        @apply bg-[#ffd1d1] text-[#a82929];
+    }
+
+    .appointment-rescheduled {
+        @apply bg-[#f6f6f6] text-black;
     }
 }
 .index-table table {

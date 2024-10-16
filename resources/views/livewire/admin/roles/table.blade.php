@@ -22,7 +22,7 @@
             @foreach($data as $item)
                 <tr>
                     @foreach ($model->filter()->getFilter() as $filter)
-                        <td>
+                        <td class="py-3">
                             @if ($filter->getType() == 'checkbox')
                                 xd
                             @elseif ($filter->getType() == 'relationship')
@@ -36,13 +36,13 @@
                     @endforeach
                     <td>
                         <div class="flex flex-nowrap">
-                            <a class="bg-green-600 text-white px-2 py-1 rounded" href="{{ route($model->routes()->edit(), $item->id) }}">
+                            <a class="mr-2 font-medium bg-green-600 text-white px-2 py-1 rounded" href="{{ route($model->routes()->edit(), $item->id) }}">
                                 Editar
                             </a>
                             <form action="{{ route($model->routes()->delete(), $item->id) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button class="bg-red-600 text-white px-2 py-1 rounded" type="submit">
+                                <button class="font-medium bg-red-600 text-white px-2 py-1 rounded" type="submit">
                                     Eliminar
                                 </button>
                             </form>

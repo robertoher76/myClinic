@@ -83,6 +83,7 @@ class Form extends Component
             $this->saved = true;
 
             $this->dispatch('appointment-created')->to(Calendar::class);
+            $this->dispatch('update-agenda')->to(Agenda::class);
         }
         else
         {
@@ -119,6 +120,7 @@ class Form extends Component
                 $this->saved = true;
 
                 $this->dispatch('appointment-updated')->to(Calendar::class);
+                $this->dispatch('update-agenda')->to(Agenda::class);
             }
         }
     }

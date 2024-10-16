@@ -1,4 +1,4 @@
-<div>
+<div class="mt-4">
 
     @foreach($permissions as $key => $permission)
         <div class="ask ask-2">
@@ -23,7 +23,7 @@
     <div class="mt-4 flex justify-center">
         <button
             wire:click="save"
-            class="bg-teal-700 uppercase min-w-[20rem] text-gray-900 font-bold text-center py-2 px-6 rounded duration-300 hover:bg-teal-600" type="button">
+            class="bg-green-600 uppercase min-w-[20rem] text-white font-bold text-center py-2 px-6 rounded duration-300 hover:bg-green-700" type="button">
             Guardar
         </button>
     </div>

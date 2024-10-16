@@ -20,19 +20,19 @@
                         </div>
 
                         <div>
-                            <x-input-label for="description" :value="__('Description')" />
+                            <x-input-label for="description" value="Descripción" />
                             <textarea id="description" name="description" rows="5" class="order-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full">{{ old('description') }}</textarea>
                             <x-input-error class="mt-2" :messages="$errors->get('description')" />
                         </div>
 
                         <div>
-                            <x-input-label for="price" :value="__('Price')" />
+                            <x-input-label for="price" value="Precio" />
                             <x-text-input id="price" name="price" type="number" step=".01" class="mt-1 block w-full" :value="old('price')" required />
                             <x-input-error class="mt-2" :messages="$errors->get('price')" />
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            <x-primary-button>Guardar</x-primary-button>
                         </div>
                     </form>
 

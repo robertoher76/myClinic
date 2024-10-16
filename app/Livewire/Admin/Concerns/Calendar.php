@@ -19,6 +19,8 @@ class Calendar extends Component
 
     public function mount($date = null)
     {
+        Carbon::setLocale('es');
+
         $this->date = Carbon::today();
 
         if ($date)

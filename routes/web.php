@@ -6,6 +6,7 @@ use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('patients', PatientsController::class);
     Route::resource('services', ServicesController::class);
     Route::resource('roles', RolesController::class);
+    Route::resource('users', UsersController::class);
 });
 
 require __DIR__.'/auth.php';

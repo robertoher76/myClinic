@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <x-application-logo class="block h-9 w-auto fill-white text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
@@ -29,6 +29,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
                         Roles
+                    </x-nav-link>
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        Usuarios
                     </x-nav-link>
                 </div>
             </div>

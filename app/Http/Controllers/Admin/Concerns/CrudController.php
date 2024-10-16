@@ -54,7 +54,7 @@ class CrudController extends Controller
 
         $item->fill($request->except($this->exceptAttributes()))->save();
 
-        return redirect()->route($item->routes()->edit(), $item->id)->with('status', 'role-updated');
+        return redirect()->route($item->routes()->edit(), $item->id)->with('status', 'model-updated');
     }
 
     public function update(Request $request, $id)

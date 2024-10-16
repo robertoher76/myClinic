@@ -17,6 +17,8 @@ class Agenda extends Component
 
     public function mount($day = null)
     {
+        Carbon::setLocale('es');
+
         $this->day = Carbon::today();
 
         if ($day)
@@ -73,16 +75,35 @@ class Agenda extends Component
             {
                 $date = Carbon::parse($model->scheduled_at);
 
+                $services = $model->services()->get();
+
+                $array = [];
+
+                $ending = 0;
+
+                foreach($services as $service)
+                {
+                    $ending += (int) $service->estimated_minutes ?? 0;
+                    array_push($array, $service->service->name);
+                }
+
+                $end_time = $date->clone()->addMinutes($ending);
+
                 return [
-                    'id'        => $model->id,
-                    'patient'   => $model->patient->name,
-                    'status'    => $model->status,
-                    'date'      => $date->toDateString(),
-                    'time'      => $date->format('g:i A'),
-                    'hour'      => $date->format('H'),
-                    'minute'    => $date->format('i'),
-                    'grid'      => (int) floor($date->format('i')/15),
-                    'timestamp' => $date->timestamp
+                    'id'            => $model->id,
+                    'patient'       => $model->patient->name,
+                    'doctor'        => $model->doctor->name,
+                    'status'        => $model->status,
+                    'status_label'  => $model->status_label,
+                    'status_class'  => $model->status_class,
+                    'date'          => $date->toDateString(),
+                    'start_time'    => $date->format('g:i A'),
+                    'end_time'      => $end_time->format('g:i A'),
+                    'hour'          => $date->format('H'),
+                    'minute'        => $date->format('i'),
+                    'grid'          => (int) floor($date->format('i')/15),
+                    'timestamp'     => $date->timestamp,
+                    'services'      => implode(', ', $array)
                 ];
             }) ?? collect();
 
@@ -94,5 +115,79 @@ class Agenda extends Component
                 array_push($this->agenda[$key]['appointments'], $appointment);
             }
         }
+    }
+
+    public function previousDay()
+    {
+        $this->day = $this->day->subDay();
+
+        $this->endday = $this->day->clone()->addHours(17);
+        $this->startday = $this->day->clone()->addHours(7);
+
+        $this->initializeAgenda();
+        $this->initializeAppointments();
+    }
+
+    public function nextDay()
+    {
+        $this->day = $this->day->addDay();
+
+        $this->endday = $this->day->clone()->addHours(17);
+        $this->startday = $this->day->clone()->addHours(7);
+
+        $this->initializeAgenda();
+        $this->initializeAppointments();
+    }
+
+    #[On('update-agenda')]
+    public function updateAgenda()
+    {
+        $this->initializeAgenda();
+        $this->initializeAppointments();
+    }
+
+    public function finishAppointment(int $id)
+    {
+        $cita = Appointment::where('id', '=', $id)->first();
+
+        if ($cita)
+        {
+            $cita->fill([
+                'status' => 2
+            ])->save();
+        }
+
+        $this->initializeAgenda();
+        $this->initializeAppointments();
+    }
+
+    public function cancelAppointment(int $id)
+    {
+        $cita = Appointment::where('id', '=', $id)->first();
+
+        if ($cita)
+        {
+            $cita->fill([
+                'status' => 3
+            ])->save();
+        }
+
+        $this->initializeAgenda();
+        $this->initializeAppointments();
+    }
+
+    public function rescheduleAppointment(int $id)
+    {
+        $cita = Appointment::where('id', '=', $id)->first();
+
+        if ($cita)
+        {
+            $cita->fill([
+                'status' => 4
+            ])->save();
+        }
+
+        $this->initializeAgenda();
+        $this->initializeAppointments();
     }
 }

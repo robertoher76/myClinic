@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Editar Rol
+            Nuevo Rol
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                 &nbsp;/&nbsp;
                 <a href="{{ route('roles.index') }}" class="underline">Roles</a>
                 &nbsp;/&nbsp;
-                Editar Rol
+                Nuevo Rol
             </span>
         </div>
     </div>
@@ -26,7 +26,7 @@
                         @csrf
 
                         <div>
-                            <x-input-label for="code" :value="__('Code')" />
+                            <x-input-label for="code" value="Código" />
                             <x-text-input id="code" name="code" type="text" class="mt-1 block w-full" :value="old('code')" required autofocus autocomplete="code" />
                             <x-input-error class="mt-2" :messages="$errors->get('code')" />
                         </div>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            <x-primary-button>Guardar</x-primary-button>
                         </div>
                     </form>
 

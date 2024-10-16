@@ -7,6 +7,7 @@ use App\Models\Concerns\Admin\Filters\Filter;
 use App\Models\Concerns\Admin\Routes\Routes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Doctor extends Model
 {
@@ -35,5 +36,13 @@ class Doctor extends Model
             'cargo'         => [ 'required', 'string', 'max:255' ],
             'phone'         => [ 'required', 'string', 'max:255' ],
         ];
+    }
+
+    /**
+     * The appointments that belong to the doctor.
+     */
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointment::class);
     }
 }

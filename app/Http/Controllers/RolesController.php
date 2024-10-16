@@ -79,7 +79,16 @@ class RolesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = $this->model::findOrFail($id);
+
+        $request->validate([
+            'code' => [ 'required', 'string', 'max:255' ],
+            'name' => [ 'required', 'string', 'max:255' ],
+        ]);
+
+        $item->fill($request->except([]))->save();
+
+        return redirect()->route('roles.edit', $item)->with('status', 'role-updated');
     }
 
     /**
@@ -87,6 +96,12 @@ class RolesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = $this->model::findOrFail($id);
+
+        //if (!$this->model->permissions()->canDelete()) abort(403);
+
+        $item->delete();
+
+        return redirect()->route($this->model->routes()->index());
     }
 }
