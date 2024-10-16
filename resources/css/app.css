@@ -23,6 +23,30 @@
     .calendar-appointment-box {
         @apply shadow-md rounded-lg p-2 border border-gray-100 font-bold cursor-pointer mt-2 mb-2;
     }
+
+    .agenda-month {
+        @apply font-semibold text-xl text-gray-800 dark:text-gray-200;
+    }
+
+    .agenda-day {
+        @apply font-semibold text-6xl text-gray-800 dark:text-gray-200;
+    }
+
+    .agenda-grid-hours {
+        @apply w-full px-2 h-screen max-h-[65vh] overflow-y-scroll;
+    }
+
+    .agenda-grid-hour {
+        @apply block w-full border-b border-gray-400 font-semibold text-lg text-gray-800 dark:text-gray-200;
+    }
+
+    .agenda-grid-minutes {
+        @apply flex flex-col bg-[#f9f9f9] min-h-20 px-2 py-4;
+    }
+
+    .agenda-grid-minute {
+        @apply border-b border-gray-400 min-h-6 block;
+    }
 }
 .index-table table {
     border-collapse: collapse;

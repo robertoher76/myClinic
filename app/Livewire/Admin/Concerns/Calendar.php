@@ -21,9 +21,8 @@ class Calendar extends Component
     {
         $this->date = Carbon::today();
 
-        if ($date) {
+        if ($date)
             $this->date = Carbon::parse($date);
-        }
 
         $this->enddate = $this->date->clone()->endOfMonth()->endOfWeek()->subDay();
         $this->startdate = $this->date->clone()->startOfMonth()->startOfWeek()->subDay();
@@ -113,11 +112,7 @@ class Calendar extends Component
             foreach($appointments as $appointment)
             {
                 $key = array_search($appointment['date'], array_column($this->calendar, 'date'));
-
-                if ($key)
-                {
-                    array_push($this->calendar[$key]['appointments'], $appointment);
-                }
+                array_push($this->calendar[$key]['appointments'], $appointment);
             }
         }
     }
